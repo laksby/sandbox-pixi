@@ -17,6 +17,19 @@ git clone git@github.com:laksby/sandbox-pixi.git
 git clone https://github.com/laksby/sandbox-pixi.git
 ```
 
+### Authenticate
+
+Create `.npmrc` file in project root directory
+
+Write following content to `.npmrc` file
+
+```text
+@laksby:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken={YOUR_GITHUB_TOKEN}
+```
+
+**{YOUR_GITHUB_TOKEN}** - your personal access token in GitHub. [Personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
 Install dependencies
 
 ```bash
