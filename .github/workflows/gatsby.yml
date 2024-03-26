@@ -50,6 +50,8 @@ jobs:
         with:
           node-version: '18'
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@laksby'
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
@@ -69,6 +71,8 @@ jobs:
             ${{ runner.os }}-gatsby-build-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
