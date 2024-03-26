@@ -1,7 +1,7 @@
 {
-  "name": "sandbox",
+  "name": "sandbox-pixi",
   "version": "1.0.0",
-  "description": "Sandbox project template for various purposes",
+  "description": "Sandbox project template for PixiJS projects",
   "private": true,
   "scripts": {
     "develop": "gatsby develop",
