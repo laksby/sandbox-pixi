@@ -1,10 +1,17 @@
-import { pixiMvp } from '@laksby/pixi-mvp';
-import { FC } from 'react';
+import { FC, useEffect, useRef } from 'react';
+import { Game } from '../game';
 
 export const IndexPage: FC = () => {
-  pixiMvp();
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  return <main className="tw-p-4 tw-min-h-screen">Home Page</main>;
+  useEffect(() => {
+    if (canvasRef.current) {
+      const game = new Game(canvasRef.current);
+      game.initializeGame();
+    }
+  }, []);
+
+  return <canvas ref={canvasRef} />;
 };
 
 export default IndexPage;
