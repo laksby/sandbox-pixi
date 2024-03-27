@@ -1,14 +1,5 @@
-import { PointData } from 'pixi.js';
-import { TileType } from './TileType';
-
 export interface Events {
-  startLevel(this: GameEvents, level: number): void | Promise<void>;
-  victory(this: GameEvents, level: number): void | Promise<void>;
-  defeat(this: GameEvents, reason: string): void | Promise<void>;
-  whenTileGroupClear(this: GameEvents, position: PointData, tile: TileType): void | Promise<void>;
-  shuffle(this: GameEvents, shifts: [PointData, PointData][]): void | Promise<void>;
-  scoreUpdate(this: GameEvents, score: number): void | Promise<void>;
-  turnUpdate(this: GameEvents, turn: number): void | Promise<void>;
+  scoreReachedLevel(this: GameEvents): void | Promise<void>;
 }
 
 export type EventPool = {

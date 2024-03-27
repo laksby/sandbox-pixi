@@ -5,6 +5,6 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Super Squad';
-  src: url('../../static/fonts/super_squad/Super Squad.ttf') format('truetype');
+  font-family: KnightWarrior;
+  src: url('../../static/fonts/knight-warrior-font/KnightWarrior-w16n8.otf') format('truetype');
 }

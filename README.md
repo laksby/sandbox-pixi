@@ -1,4 +1,4 @@
-# Sandbox PixiJS
+# Sandbox for PixiJS
 
 ![status](https://github.com/laksby/sandbox-pixi/actions/workflows/gatsby.yml/badge.svg?branch=main)
 

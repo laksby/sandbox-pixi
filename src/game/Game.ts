@@ -18,12 +18,8 @@ export class Game extends BaseGame<GameModel> {
     return new GameModel();
   }
 
-  protected createRootView(model: GameModel): IView {
-    return new AppView({
-      cols: model.board.cols,
-      rows: model.board.rows,
-      allTileTypes: model.level.allTileTypes,
-    });
+  protected createRootView(): IView {
+    return new AppView();
   }
 
   protected getAssets(): UnresolvedAsset[] {
@@ -42,17 +38,11 @@ export class Game extends BaseGame<GameModel> {
 
   protected getSounds(): SoundSourceMap {
     return {
-      intro: 'sounds/intro.mp3',
-      clear: 'sounds/clear.mp3',
-      blast: 'sounds/blast.mp3',
-      shuffle: 'sounds/shuffle.mp3',
-      levelUp: 'sounds/level-up.mp3',
-      defeat: 'sounds/defeat.mp3',
-      error: 'sounds/error.mp3',
+      click: 'sounds/click.mp3',
     };
   }
 
   protected getFonts(): string[] {
-    return ['Super Squad'];
+    return ['KnightWarrior'];
   }
 }
