@@ -1,6 +1,6 @@
 import { BaseGame, GameApplicationOptions, IView } from '@laksby/pixi-mvp';
 import { SoundSourceMap } from '@pixi/sound';
-import { UnresolvedAsset } from 'pixi.js';
+import { TextStyleOptions, UnresolvedAsset } from 'pixi.js';
 import { AppView } from './components/App/AppView';
 import { GameModel } from './model';
 
@@ -44,5 +44,28 @@ export class Game extends BaseGame<GameModel> {
 
   protected getFonts(): string[] {
     return ['KnightWarrior'];
+  }
+
+  protected getTextStyles(): Record<string, TextStyleOptions> {
+    return {
+      default: {
+        fontFamily: 'KnightWarrior',
+        fontSize: 48,
+        fill: 0xffffff,
+        letterSpacing: 2,
+      },
+      title: {
+        fontFamily: 'KnightWarrior',
+        fontSize: 72,
+        fill: 0xffffff,
+        letterSpacing: 2,
+      },
+      small: {
+        fontFamily: 'KnightWarrior',
+        fontSize: 24,
+        fill: 0xffffff,
+        letterSpacing: 2,
+      },
+    };
   }
 }

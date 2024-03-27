@@ -131,3 +131,6 @@ public
 
 # Local npm configuration
 .npmrc
+
+# Local development scripts
+.local.*
