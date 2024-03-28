@@ -1,17 +1,27 @@
 import { BasePresenter } from '@laksby/pixi-mvp';
-import { GameModel } from '../../model';
+import { GameModel, Item } from '../../model';
 import { IBoardPresenter } from './IBoardPresenter';
 import { IBoardView } from './IBoardView';
 
 export class BoardPresenter extends BasePresenter<IBoardView, GameModel> implements IBoardPresenter {
-  public async click(): Promise<void> {
-    this.view.soundClick();
-
-    await this.model.updateScore();
-    await this.refreshView();
+  protected onPrepare(): void {
+    this.model.events.on('levelStart', () => this.refreshView());
   }
 
-  protected onRefresh(): void {
+  public async click(item: Item): Promise<void> {
+    this.view.soundClick();
+
+    this.model.clickItem(item);
+    this.view.deleteItem(item.id);
     this.view.setScore(this.model.stats.score);
+  }
+
+  protected async onRefresh(): Promise<void> {
+    this.view.setScore(this.model.stats.score);
+    this.view.clearItems();
+
+    for (const item of this.model.board.items) {
+      await this.view.addItem(item);
+    }
   }
 }

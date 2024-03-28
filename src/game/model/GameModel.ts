@@ -1,23 +1,30 @@
-import { GameEvents } from './GameEvents';
+import { GameEvents } from '@laksby/pixi-mvp';
+import { GameBoard } from './GameBoard';
 import { GameStats } from './GameStats';
+import { Item } from './Item';
+
+export interface Events {
+  levelStart: unknown;
+  levelEnd: number;
+}
 
 export class GameModel {
-  private readonly _events = new GameEvents();
-  private readonly _stats = new GameStats();
+  public readonly events = new GameEvents<Events>();
+  public readonly stats = new GameStats();
+  public readonly board = new GameBoard();
 
-  public get events(): GameEvents {
-    return this._events;
+  public async startLevel(): Promise<void> {
+    this.board.generate(this.stats.levelSize);
+    await this.events.emit('levelStart');
   }
 
-  public get stats(): GameStats {
-    return this._stats;
-  }
-
-  public async updateScore(): Promise<void> {
+  public async clickItem(item: Item): Promise<void> {
+    this.board.deleteItem(item);
     this.stats.addScore(1);
 
-    if (this.stats.isReachedNextLevel) {
-      await this.events.emit('scoreReachedLevel', []);
+    if (this.board.items.length <= 0) {
+      this.stats.increaseLevel();
+      await this.events.emit('levelEnd', this.stats.level);
     }
   }
 }

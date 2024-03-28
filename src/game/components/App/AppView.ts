@@ -1,5 +1,5 @@
 import { BaseView } from '@laksby/pixi-mvp';
-import { Color, Container, Graphics, Text } from 'pixi.js';
+import { Color, Container, Graphics, Text, TilingSprite } from 'pixi.js';
 import { BoardView } from '../Board/BoardView';
 import { AppPresenter } from './AppPresenter';
 import { IAppPresenter } from './IAppPresenter';
@@ -10,10 +10,13 @@ export class AppView extends BaseView<IAppPresenter> implements IAppView {
     super(AppPresenter);
   }
 
-  public boardView = this.view(
-    new BoardView({
-      fontSize: 48,
-    }),
+  public boardView = this.view(new BoardView({ fontSize: 48 }), view => view.zIndex(2));
+
+  public background = this.component(TilingSprite, background =>
+    background
+      .spriteTexture('tile-background')
+      .size({ width: this.app.screen.width, height: this.app.screen.height })
+      .zIndex(1),
   );
 
   public overlay = this.component(Container, overlay =>
@@ -27,6 +30,7 @@ export class AppView extends BaseView<IAppPresenter> implements IAppView {
           .draw(gfx => gfx.rect(0, 0, this.app.screen.width, this.app.screen.height).fill(new Color(0x20366f)))
           .child(Text, title =>
             title
+              .label('title')
               .text('You reached next level!')
               .textAnchor(0.5)
               .textStyle(this.textStyle('title'))
@@ -44,7 +48,8 @@ export class AppView extends BaseView<IAppPresenter> implements IAppView {
       ),
   );
 
-  public showOverlay(): void {
+  public showOverlay(level: number): void {
+    this.overlay.setForInnerText('title', 'text', `You reached level ${level}!`);
     this.overlay.set('visible', true);
   }
 

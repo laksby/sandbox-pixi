@@ -1,20 +1,26 @@
 export class GameStats {
   private _score = 0;
-  private _scoreToNextLevel = 10;
+  private _level = 1;
+  private _levelSize = 10;
 
   public get score(): number {
     return this._score;
   }
 
-  public get scoreToNextLevel(): number {
-    return this._scoreToNextLevel;
+  public get level(): number {
+    return this._level;
   }
 
-  public get isReachedNextLevel(): boolean {
-    return this._score >= this._scoreToNextLevel;
+  public get levelSize(): number {
+    return this._levelSize;
   }
 
   public addScore(score: number): void {
     this._score += score;
+  }
+
+  public increaseLevel(): void {
+    this._level++;
+    this._levelSize += 2;
   }
 }

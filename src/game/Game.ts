@@ -24,15 +24,13 @@ export class Game extends BaseGame<GameModel> {
 
   protected getAssets(): UnresolvedAsset[] {
     return [
-      { alias: 'board', src: 'img/board.png' },
-      { alias: 'button', src: 'img/button.png' },
-      { alias: 'score', src: 'img/score.png' },
-      { alias: 'turn', src: 'img/turn.png' },
-      { alias: 'tile-blue', src: 'img/tile-blue.png' },
-      { alias: 'tile-pink', src: 'img/tile-pink.png' },
-      { alias: 'tile-red', src: 'img/tile-red.png' },
-      { alias: 'tile-yellow', src: 'img/tile-yellow.png' },
-      { alias: 'tile-green', src: 'img/tile-green.png' },
+      { alias: 'panel', src: 'img/panel.png' },
+      { alias: 'hex-blue', src: 'img/hex-blue.png' },
+      { alias: 'hex-green', src: 'img/hex-green.png' },
+      { alias: 'hex-purple', src: 'img/hex-purple.png' },
+      { alias: 'hex-red', src: 'img/hex-red.png' },
+      { alias: 'hex-yellow', src: 'img/hex-yellow.png' },
+      { alias: 'tile-background', src: 'img/tile-background.png' },
     ];
   }
 
@@ -51,7 +49,7 @@ export class Game extends BaseGame<GameModel> {
       default: {
         fontFamily: 'KnightWarrior',
         fontSize: 48,
-        fill: 0xffffff,
+        fill: 0x211010,
         letterSpacing: 2,
       },
       title: {
