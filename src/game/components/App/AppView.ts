@@ -12,14 +12,14 @@ export class AppView extends BaseView<IAppPresenter> implements IAppView {
 
   public boardView = this.view(new BoardView(), view => view.zIndex(2));
 
-  public background = this.component(TilingSprite, background =>
+  public background = this.element(TilingSprite, background =>
     background
       .spriteTexture('tile-background')
       .size({ width: this.app.screen.width, height: this.app.screen.height })
       .zIndex(1),
   );
 
-  public overlay = this.component(Container, overlay =>
+  public overlay = this.element(Container, overlay =>
     overlay
       .zIndex(100)
       .hidden(true)

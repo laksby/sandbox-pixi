@@ -14,7 +14,7 @@ export class BoardView extends BaseView<IBoardPresenter> implements IBoardView {
 
   public items = this.pool(Sprite);
 
-  public score = this.component(Sprite, score =>
+  public score = this.element(Sprite, score =>
     score
       .spriteTexture('panel')
       .spriteAnchor(0.5)
