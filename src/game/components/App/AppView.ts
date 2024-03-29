@@ -10,7 +10,7 @@ export class AppView extends BaseView<IAppPresenter> implements IAppView {
     super(AppPresenter);
   }
 
-  public boardView = this.view(new BoardView({ fontSize: 48 }), view => view.zIndex(2));
+  public boardView = this.view(new BoardView(), view => view.zIndex(2));
 
   public background = this.component(TilingSprite, background =>
     background
@@ -31,7 +31,6 @@ export class AppView extends BaseView<IAppPresenter> implements IAppView {
           .child(Text, title =>
             title
               .label('title')
-              .text('You reached next level!')
               .textAnchor(0.5)
               .textStyle(this.textStyle('title'))
               .layout('center-screen')

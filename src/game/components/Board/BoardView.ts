@@ -7,16 +7,9 @@ import { BoardPresenter } from './BoardPresenter';
 import { IBoardPresenter } from './IBoardPresenter';
 import { IBoardView } from './IBoardView';
 
-export interface BoardViewOptions {
-  fontSize: number;
-}
-
 export class BoardView extends BaseView<IBoardPresenter> implements IBoardView {
-  protected readonly _options: BoardViewOptions;
-
-  constructor(options: BoardViewOptions) {
+  constructor() {
     super(BoardPresenter);
-    this._options = options;
   }
 
   public items = this.pool(Sprite);
@@ -52,7 +45,7 @@ export class BoardView extends BaseView<IBoardPresenter> implements IBoardView {
   }
 
   public async addItem(item: Item): Promise<void> {
-    await this.items.add(item.id, child =>
+    const component = await this.items.add(item.id, child =>
       child
         .spriteTexture(`hex-${item.color}`)
         .spriteAnchor(0.5)
@@ -61,10 +54,17 @@ export class BoardView extends BaseView<IBoardPresenter> implements IBoardView {
         .hover()
         .on('pointerdown', () => this.presenter.click(item)),
     );
+
+    await this.animator.appear(component, 100);
   }
 
-  public deleteItem(id: number): void {
-    this.items.delete(id);
+  public async deleteItem(id: number): Promise<void> {
+    const component = this.items.get(id);
+
+    if (component) {
+      await this.animator.hide(component, 100);
+      this.items.delete(id);
+    }
   }
 
   public setScore(score: number): void {

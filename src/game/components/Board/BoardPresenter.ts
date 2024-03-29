@@ -11,8 +11,8 @@ export class BoardPresenter extends BasePresenter<IBoardView, GameModel> impleme
   public async click(item: Item): Promise<void> {
     this.view.soundClick();
 
-    this.model.clickItem(item);
-    this.view.deleteItem(item.id);
+    await this.model.clickItem(item);
+    await this.view.deleteItem(item.id);
     this.view.setScore(this.model.stats.score);
   }
 
