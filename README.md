@@ -6,6 +6,10 @@ This repository contains source code for PixiJS sandbox template.
 
 [Link to Preview](https://laksby.github.io/sandbox-pixi/)
 
+## Recommended VSCode extensions
+
+- [Folder Templates](https://marketplace.visualstudio.com/items?itemName=Huuums.vscode-fast-folder-structure)
+
 ## Setup
 
 Clone repository
