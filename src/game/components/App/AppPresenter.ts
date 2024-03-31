@@ -5,7 +5,7 @@ import { IAppView } from './IAppView';
 
 export class AppPresenter extends BasePresenter<IAppView, GameModel> implements IAppPresenter {
   protected async onPrepare(): Promise<void> {
-    this.model.events.on('levelEnd', level => this.onScoreReachedLevel(level));
+    this.model.events.on('levelEnd', level => this.onLevelEnd(level));
 
     await this.model.startLevel();
   }
@@ -15,7 +15,7 @@ export class AppPresenter extends BasePresenter<IAppView, GameModel> implements 
     this.model.startLevel();
   }
 
-  private onScoreReachedLevel(level: number): void {
+  private onLevelEnd(level: number): void {
     this.view.showOverlay(level);
   }
 }

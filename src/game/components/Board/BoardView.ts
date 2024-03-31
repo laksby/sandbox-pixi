@@ -68,7 +68,7 @@ export class BoardView extends BaseView<IBoardPresenter> implements IBoardView {
   }
 
   public setScore(score: number): void {
-    this.score.setForInnerText('scoreText', 'text', `Score: ${score}`);
+    this.score.object<Text>('scoreText').text = `Score: ${score}`;
   }
 
   public async soundClick(): Promise<void> {

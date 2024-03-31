@@ -48,11 +48,11 @@ export class AppView extends BaseView<IAppPresenter> implements IAppView {
   );
 
   public showOverlay(level: number): void {
-    this.overlay.setForInnerText('title', 'text', `You reached level ${level}!`);
-    this.overlay.set('visible', true);
+    this.overlay.object<Text>('title').text = `You reached level ${level}!`;
+    this.overlay.object().visible = true;
   }
 
   public hideOverlay(): void {
-    this.overlay.set('visible', false);
+    this.overlay.object().visible = false;
   }
 }
