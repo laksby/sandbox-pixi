@@ -15,7 +15,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@laksby/pixi-mvp": "^1.4.0",
+    "@laksby/pixi-mvp": "^1.5.2",
     "@pixi/sound": "^6.0.0",
     "gatsby": "^5.12.4",
     "gatsby-source-filesystem": "^5.12.0",

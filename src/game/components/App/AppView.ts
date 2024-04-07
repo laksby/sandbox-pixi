@@ -15,7 +15,8 @@ export class AppView extends BaseView<IAppPresenter> implements IAppView {
   public background = this.element(TilingSprite, background =>
     background
       .spriteTexture('tile-background')
-      .size({ width: this.app.screen.width, height: this.app.screen.height })
+      .spriteWidth(this.app.screen.width)
+      .spriteHeight(this.app.screen.height)
       .zIndex(1),
   );
 

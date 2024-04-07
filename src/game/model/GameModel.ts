@@ -1,4 +1,4 @@
-import { GameEvents } from '@laksby/pixi-mvp';
+import { EventEmitter } from '@laksby/pixi-mvp';
 import { GameBoard } from './GameBoard';
 import { GameStats } from './GameStats';
 import { Item } from './Item';
@@ -9,7 +9,7 @@ export interface Events {
 }
 
 export class GameModel {
-  public readonly events = new GameEvents<Events>();
+  public readonly events = new EventEmitter<Events>();
   public readonly stats = new GameStats();
   public readonly board = new GameBoard();
 

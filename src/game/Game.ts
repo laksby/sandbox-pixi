@@ -18,7 +18,7 @@ export class Game extends BaseGame<GameModel> {
     return new GameModel();
   }
 
-  protected createRootView(): IView {
+  protected createSceneView(): IView {
     return new AppView();
   }
 
